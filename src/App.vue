@@ -1,0 +1,169 @@
+<script setup>
+import { ref } from "vue";
+import Button from "./components/button/Button.vue";
+import Avatar from "./components/avatar/Avatar.vue";
+import Badge from "./components/badge/Badge.vue";
+
+/**
+ * 클릭 이벤트 핸들러
+ */
+function clickHandler() {
+  console.log("함수 안의 메시지");
+}
+/**
+ * 클릭 이벤트 핸들러 - 매개변수 있음
+ * @param msg - 클릭 핸들러 안의 매개변수
+ */
+function clickHandlerWithArg(msg) {
+  alert(msg);
+}
+/**
+ * 클릭 이벤트 핸들러 - 이벤트 객체를 전달인자로 받음
+ * @param event - 이벤트 객체
+ */
+function clickHandlerWithEvent(event) {
+  console.log(event);
+}
+</script>
+
+<template>
+  <h1>Make Vue Components</h1>
+
+  <!-- Button -->
+  <article>
+    <h2>Button</h2>
+    <h3>Button - size</h3>
+    <section class="nowrap">
+      <Button size="sm">Small</Button>
+      <Button size="md">Default</Button>
+      <Button size="lg">Large</Button>
+    </section>
+    <h3>Button - variant</h3>
+    <section class="nowrap">
+      <Button>Default</Button>
+      <Button variant="outlined">outlined</Button>
+      <Button variant="contained">contained</Button>
+    </section>
+    <h3>Button - Event</h3>
+    <section class="nowrap">
+      <Button :onClick="clickHandler">매개변수 없는 핸들러 버튼</Button>
+      <Button :onClick="(e) => clickHandlerWithEvent(e)">이벤트 객체를 받는 핸들러 버튼</Button>
+      <Button :onClick="() => clickHandlerWithArg('버튼에서 온 메시지')"
+        >매개변수 있는 핸들러 버튼</Button
+      >
+    </section>
+    <h3>Button - with Icon, without icon</h3>
+    <section class="nowrap">
+      <Button>
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#000"
+          >
+            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+          </svg>
+        </template>
+        아이콘있는 버튼
+      </Button>
+      <Button :isIconOnly="true">
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#000"
+          >
+            <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+          </svg>
+        </template>
+        아이콘만 있는 버튼( 이 부분은 렌더링 되지 않습니다)
+      </Button>
+    </section>
+  </article>
+
+  <!-- Avatar -->
+  <article>
+    <h2>Avatar</h2>
+    <h3>Avatar - size</h3>
+    <section class="nowrap">
+      <Avatar size="sm"><template #letter>작은</template></Avatar>
+      <Avatar size="md"><template #letter>기본</template></Avatar>
+      <Avatar size="lg"><template #letter>큰</template></Avatar>
+    </section>
+    <h3>Avatar - variant</h3>
+    <section class="nowrap">
+      <Avatar>
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#000"
+          >
+            <path
+              d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"
+            />
+          </svg>
+        </template>
+      </Avatar>
+      <Avatar>
+        <template #image>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+            alt="아바타 이미지"
+          />
+        </template>
+      </Avatar>
+      <Avatar>
+        <template #letter>나현</template>
+      </Avatar>
+    </section>
+  </article>
+
+  <!-- Badge -->
+  <article>
+    <h2>Badge</h2>
+    <section class="nowrap">
+      <Badge #default>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+          <path d="M440-400v-360h80v360h-80Zm0 200v-80h80v80h-80Z" />
+        </svg>
+      </Badge>
+    </section>
+  </article>
+</template>
+
+<style scoped>
+h1 {
+  margin: 48px 0;
+  text-align: center;
+  font-size: 24px;
+}
+article {
+  padding: 16px 0;
+  margin: 16px;
+  border-bottom: 1px solid #333;
+}
+h2 {
+  margin: 8px 0;
+  text-align: center;
+  font-size: 20px;
+}
+section {
+  padding: 16px;
+  margin: 8px 0;
+  display: grid;
+  gap: 8px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+}
+section.nowrap {
+  display: flex;
+  align-items: center;
+}
+</style>

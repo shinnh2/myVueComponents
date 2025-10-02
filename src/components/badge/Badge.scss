@@ -1,0 +1,7 @@
+@use "/src/styles/abstracts/variables" as v;
+
+.badge {
+  padding: 0 4px;
+  border-radius: 4px;
+  background-color: v.$errorColor;
+}

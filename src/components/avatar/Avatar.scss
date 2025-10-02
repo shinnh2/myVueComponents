@@ -1,0 +1,51 @@
+@use "/src/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as m;
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  //size
+  &--sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  &--md {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  &--lg {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+
+  //slot 관련
+  //icon이 있는 아바타
+  &__icon {
+    @include m.circle();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  //이미지가 있는 아바타
+  &__image {
+    @include m.circle();
+    @include m.centerLeftTop();
+    //vue 특성으로 인한 data 속성 발생으로 deep 처리
+    :deep(img) {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 20 / 20;
+    }
+  }
+  //letter 스타일 아바타 (배경색 랜덤)
+  &__letter {
+    @include m.circle();
+    @include m.centerLeftTop();
+    background-color: #ccc;
+    color: #fff;
+  }
+}

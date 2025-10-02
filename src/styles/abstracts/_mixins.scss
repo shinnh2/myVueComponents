@@ -1,0 +1,17 @@
+/**
+* 감싸는 요소를 원형으로 만들어준다.
+*/
+@mixin circle() {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/**
+* 자식 요소를 가로세로 중앙에 정렬한다.
+*/
+@mixin centerLeftTop() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
