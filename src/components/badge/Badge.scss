@@ -1,7 +1,51 @@
 @use "/src/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as m;
+
+@mixin circleBadge() {
+  width: 20px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 0px 9px;
+}
 
 .badge {
+  @include m.centerLeftTop();
   padding: 0 4px;
-  border-radius: 4px;
-  background-color: v.$errorColor;
+  height: 20px;
+  border-radius: 12px;
+  background-color: v.$primaryColor;
+  font-size: 12px;
+  color: #fff;
+
+  //variant
+  &--contained {
+    background-color: v.$containedColor;
+  }
+  &--error {
+    @include circleBadge();
+    background-color: v.$errorColor;
+
+    :deep(svg) {
+      width: 16px;
+      height: 16px;
+      fill: v.$errorEmColor;
+    }
+  }
+  &--error-em {
+    @include circleBadge();
+    background-color: v.$errorEmColor;
+
+    :deep(svg) {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+  }
+  &--sup {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }

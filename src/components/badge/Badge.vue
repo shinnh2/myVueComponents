@@ -17,7 +17,7 @@ const rawProps = defineProps({
   variant: {
     type: String,
     validator(value, props) {
-      return ["", "error", "error-em", "contained"].includes(value);
+      return ["", "error", "error-em", "contained", "sup"].includes(value);
     },
     default: "",
   },
