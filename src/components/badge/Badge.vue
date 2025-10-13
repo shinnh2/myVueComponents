@@ -17,7 +17,7 @@ const rawProps = defineProps({
   variant: {
     type: String,
     validator(value, props) {
-      return ["", "error", "error-em", "contained", "sup"].includes(value);
+      return ["", "error", "error-em", "contained"].includes(value);
     },
     default: "",
   },
@@ -35,14 +35,14 @@ const badgeClass = computed(() => ({
 </script>
 
 <template>
-  <div class="badge" :class="badgeClass">
-    <template v-if="$slots.default">
-      <slot name="default"></slot>
-    </template>
-    <sup v-if="$slots.superscipt">
-      <slot name="superscipt"></slot>
-    </sup>
+  <div v-if="$slots.default" class="badge" :class="badgeClass">
+    <slot name="default">기본 배지</slot>
   </div>
+
+  <sup v-if="$slots.superscipt && $slots.superscipt().length" class="badge badge--sup">
+    <slot name="superscipt">위 첨자 스타일 배지</slot>
+  </sup>
+  <sup v-else class="badge badge--sup badge--dot" aria-label="알림 표시"></sup>
 </template>
 
 <style scoped>

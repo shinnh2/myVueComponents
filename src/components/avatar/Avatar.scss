@@ -2,6 +2,7 @@
 @use "/src/styles/abstracts/mixins" as m;
 
 .avatar {
+  position: relative;
   width: 40px;
   height: 40px;
 
@@ -24,14 +25,14 @@
 
   //slot 관련
   //icon이 있는 아바타
-  &__icon {
+  &__icon-wrap {
     @include m.circle();
     display: flex;
     align-items: center;
     justify-content: center;
   }
   //이미지가 있는 아바타
-  &__image {
+  &__image-wrap {
     @include m.circle();
     @include m.centerLeftTop();
     //vue 특성으로 인한 data 속성 발생으로 deep 처리
@@ -42,7 +43,7 @@
     }
   }
   //letter 스타일 아바타 (배경색 랜덤)
-  &__letter {
+  &__letter-wrap {
     @include m.circle();
     @include m.centerLeftTop();
     background-color: #ccc;
