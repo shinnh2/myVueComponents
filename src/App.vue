@@ -96,6 +96,7 @@ function clickHandlerWithEvent(event) {
     </section>
     <h3>Avatar - variant</h3>
     <section class="nowrap">
+      <!-- 아이콘 아바타 -->
       <Avatar>
         <template #icon>
           <svg
@@ -111,6 +112,7 @@ function clickHandlerWithEvent(event) {
           </svg>
         </template>
       </Avatar>
+      <!-- 이미지 아바타 -->
       <Avatar>
         <template #image>
           <img
@@ -119,6 +121,7 @@ function clickHandlerWithEvent(event) {
           />
         </template>
       </Avatar>
+      <!-- 문자가 있는 아바타 -->
       <Avatar>
         <template #letter>나현</template>
       </Avatar>
@@ -146,10 +149,11 @@ function clickHandlerWithEvent(event) {
         </svg>
       </Badge>
     </section>
-    <h3>Superscript Style - 단독 사용 어려움</h3>
+    <h3>Superscript Style (단독 사용 어려움. Avatar와 함께 사용)</h3>
+    <h4>Superscript Style - 문자열이 있는 경우</h4>
     <section class="nowrap">
-      <Badge #superscipt variant="sup">10</Badge>
       <Avatar>
+        <template #badge><Badge #superscipt>10</Badge></template>
         <template #icon>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -164,25 +168,60 @@ function clickHandlerWithEvent(event) {
           </svg>
         </template>
       </Avatar>
+      <Avatar>
+        <template #badge><Badge #superscipt>10</Badge></template>
+        <template #image>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+            alt="아바타 이미지"
+          />
+        </template>
+      </Avatar>
+      <Avatar>
+        <template #badge><Badge #superscipt>10</Badge></template>
+        <template #letter>나현</template>
+      </Avatar>
+    </section>
+    <h4>Superscript Style - 문자열 없는 경우</h4>
+    <section class="nowrap">
+      <Avatar>
+        <template #badge><Badge #superscipt></Badge></template>
+        <template #icon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#000"
+          >
+            <path
+              d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"
+            />
+          </svg>
+        </template>
+      </Avatar>
+      <Avatar>
+        <template #badge><Badge #superscipt></Badge></template>
+        <template #image>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+            alt="아바타 이미지"
+          />
+        </template>
+      </Avatar>
+      <Avatar>
+        <template #badge><Badge #superscipt></Badge></template>
+        <template #letter>나현</template>
+      </Avatar>
     </section>
   </article>
 </template>
 
 <style scoped>
-h1 {
-  margin: 48px 0;
-  text-align: center;
-  font-size: 24px;
-}
 article {
   padding: 16px 0;
   margin: 16px;
   border-bottom: 1px solid #333;
-}
-h2 {
-  margin: 8px 0;
-  text-align: center;
-  font-size: 20px;
 }
 section {
   padding: 16px;
@@ -195,5 +234,38 @@ section {
 section.nowrap {
   display: flex;
   align-items: center;
+}
+h1 {
+  margin: 48px 0;
+  text-align: center;
+  font-size: 24px;
+}
+h2 {
+  margin: 8px 0;
+  text-align: center;
+  font-size: 20px;
+}
+h3 {
+  position: relative;
+  padding-left: 12px;
+  margin: 4px 0;
+  font-size: 18px;
+}
+h3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #333;
+  transform: translateY(-50%);
+}
+h4 {
+  padding-left: 16px;
+  margin: 4px 0;
+  font-size: 16px;
 }
 </style>

@@ -36,7 +36,7 @@ const avatarClass = computed(() => ({
 }));
 
 /**
- * hex코드 색상을 랜덤으로 만드는 함수 (letter avatar 배경색 등에 사용)
+ * hex코드 색상을 랜덤으로 만드는 함수 (이름 아바타-letter avatar-의 배경색 생성)
  */
 const makeRandomColor = () => {
   const randomColor = Math.floor(Math.random() * 16777215)
@@ -48,19 +48,23 @@ const makeRandomColor = () => {
 
 <template>
   <div :class="avatarClass">
-    <div v-if="$slots.icon" class="avatar__icon">
-      <slot name="icon"></slot>
+    <div v-if="$slots.icon" class="avatar__icon-wrap">
+      <slot name="icon">아이콘 아바타</slot>
     </div>
-    <div v-if="$slots.image" class="avatar__image">
-      <slot name="image"></slot>
+    <div v-else-if="$slots.image" class="avatar__image-wrap">
+      <slot name="image">이미지 아바타</slot>
     </div>
     <div
-      v-if="$slots.letter"
-      class="avatar__letter"
+      v-else-if="$slots.letter"
+      class="avatar__letter-wrap"
       :style="`background-color:${makeRandomColor()}`"
     >
-      <slot name="letter"></slot>
+      <slot name="letter">문자열 아바타</slot>
     </div>
+
+    <template v-if="$slots.badge">
+      <slot name="badge">배지가 있는 아바타</slot>
+    </template>
   </div>
 </template>
 
