@@ -1,0 +1,66 @@
+@use "/src/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as m;
+
+.input-area {
+  max-width: 320px;
+
+  &__label {
+    display: block;
+    margin: 6px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  &__label.focused {
+    color: v.$primaryColor;
+  }
+  &__label.isError {
+    color: v.$errorEmColor;
+  }
+  &__label.disabled {
+    color: #9f9f9f;
+  }
+
+  .input-wrap {
+    display: flex;
+    min-width: 180px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    padding: 8px 12px;
+    box-sizing: border-box;
+
+    &__input {
+      flex: 1;
+      padding: 4px 0;
+      border: 0 none;
+      outline: none;
+      background: none;
+    }
+    &__icon {
+      flex: none;
+      margin-left: auto;
+    }
+    &__error-msg {
+      margin-top: 4px;
+      padding: 0 4px;
+      color: v.$errorEmColor;
+      font-size: 12px;
+    }
+
+    &.focused {
+      border: 1px solid v.$primaryColor;
+      box-shadow: 0 0 0 1px v.$primaryColor inset;
+    }
+    &.isError {
+      border: 1px solid v.$errorEmColor;
+      box-shadow: 0 0 0 1px v.$errorEmColor inset;
+    }
+    &.disabled {
+      background: #e0e0e0;
+      color: #9f9f9f;
+
+      .input-wrap__input {
+        color: #9f9f9f;
+      }
+    }
+  }
+}

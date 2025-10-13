@@ -1,29 +1,40 @@
 <script setup>
-import { ref } from "vue";
-import Button from "./components/button/Button.vue";
-import Avatar from "./components/avatar/Avatar.vue";
-import Badge from "./components/badge/Badge.vue";
+  import { ref } from "vue";
+  import Button from "./components/button/Button.vue";
+  import Avatar from "./components/avatar/Avatar.vue";
+  import Badge from "./components/badge/Badge.vue";
+  import TextField from "./components/input/TextField.vue";
 
-/**
- * 클릭 이벤트 핸들러
- */
-function clickHandler() {
-  console.log("함수 안의 메시지");
-}
-/**
- * 클릭 이벤트 핸들러 - 매개변수 있음
- * @param msg - 클릭 핸들러 안의 매개변수
- */
-function clickHandlerWithArg(msg) {
-  alert(msg);
-}
-/**
- * 클릭 이벤트 핸들러 - 이벤트 객체를 전달인자로 받음
- * @param event - 이벤트 객체
- */
-function clickHandlerWithEvent(event) {
-  console.log(event);
-}
+  /**
+   * 클릭 이벤트 핸들러
+   */
+  function clickHandler() {
+    console.log("함수 안의 메시지");
+  }
+  /**
+   * 클릭 이벤트 핸들러 - 매개변수 있음
+   * @param msg - 클릭 핸들러 안의 매개변수
+   */
+  function clickHandlerWithArg(msg) {
+    alert(msg);
+  }
+  /**
+   * 클릭 이벤트 핸들러 - 이벤트 객체를 전달인자로 받음
+   * @param event - 이벤트 객체
+   */
+  function clickHandlerWithEvent(event) {
+    console.log(event);
+  }
+
+  /**
+   * TextField 컴포넌트에 사용될 반응형 값
+   */
+  const username = ref("");
+  const password = ref("");
+  const userage = ref(20);
+  const usertext = ref("아이콘이 있는 input");
+  const errorExample = ref("");
+  const disabledExample = ref("값 비활성화");
 </script>
 
 <template>
@@ -215,57 +226,116 @@ function clickHandlerWithEvent(event) {
       </Avatar>
     </section>
   </article>
+
+  <!-- Input -->
+  <article>
+    <h2>Input</h2>
+    <h3>Input - Text field (Input type text, password, number)</h3>
+    <form>
+      <h4>Text field : Type별</h4>
+      <section class="nowrap">
+        <TextField v-model="username" id="username" name="username" label="사용자명"></TextField>
+        <TextField
+          v-model="password"
+          id="password"
+          name="password"
+          label="비밀번호"
+          type="password"
+        ></TextField>
+        <TextField v-model="userage" id="age" name="age" label="나이" type="number"></TextField>
+      </section>
+      <h4>Text field : 아이콘 포함</h4>
+      <section>
+        <TextField v-model="usertext" id="usertext" name="usertext" label="아이콘 텍스트">
+          <template #icon
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#000000"
+            >
+              <path
+                d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+              />
+            </svg>
+          </template>
+        </TextField>
+      </section>
+      <h4>Text field : 에러 메시지</h4>
+      <section>
+        <TextField
+          v-model="errorExample"
+          id="errorExample"
+          name="errorExample"
+          label="에러가 있는 Text Field"
+          :isError="true"
+          errorMsg="에러 메시지는 여기에 표시됩니다."
+        ></TextField>
+      </section>
+      <h4>Text field : 비활성화</h4>
+      <section>
+        <TextField
+          v-model="disabledExample"
+          id="disabledExample"
+          name="disabledExample"
+          label="비활성화된 Text Field"
+          :disabled="true"
+        ></TextField>
+      </section>
+    </form>
+  </article>
 </template>
 
 <style scoped>
-article {
-  padding: 16px 0;
-  margin: 16px;
-  border-bottom: 1px solid #333;
-}
-section {
-  padding: 16px;
-  margin: 8px 0;
-  display: grid;
-  gap: 8px;
-  background: #fafafa;
-  border: 1px solid #ececec;
-}
-section.nowrap {
-  display: flex;
-  align-items: center;
-}
-h1 {
-  margin: 48px 0;
-  text-align: center;
-  font-size: 24px;
-}
-h2 {
-  margin: 8px 0;
-  text-align: center;
-  font-size: 20px;
-}
-h3 {
-  position: relative;
-  padding-left: 12px;
-  margin: 4px 0;
-  font-size: 18px;
-}
-h3::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 100%;
-  background: #333;
-  transform: translateY(-50%);
-}
-h4 {
-  padding-left: 16px;
-  margin: 4px 0;
-  font-size: 16px;
-}
+  article {
+    padding: 16px 0;
+    margin: 16px;
+    border-bottom: 1px solid #333;
+  }
+  section {
+    padding: 16px;
+    margin: 8px 0;
+    display: grid;
+    gap: 8px;
+    background: #fafafa;
+    border: 1px solid #ececec;
+  }
+  section.nowrap {
+    display: flex;
+    align-items: center;
+  }
+  h1 {
+    margin: 48px 0;
+    text-align: center;
+    font-size: 24px;
+  }
+  h2 {
+    margin: 8px 0;
+    text-align: center;
+    font-size: 20px;
+  }
+  h3 {
+    position: relative;
+    padding-left: 12px;
+    margin: 4px 0;
+    font-size: 18px;
+  }
+  h3::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: #333;
+    transform: translateY(-50%);
+  }
+  h4 {
+    padding-left: 16px;
+    margin: 4px 0;
+    font-size: 16px;
+  }
 </style>
