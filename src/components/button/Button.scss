@@ -7,6 +7,7 @@
   height: 48px;
   display: flex;
   align-items: center;
+  color: #fff;
 
   //size
   &--sm {
@@ -23,10 +24,10 @@
   &--outlined {
     background: v.$secondaryColor;
     border: 1px solid v.$primaryColor;
+    color: v.$primaryColor;
   }
   &--contained {
     background: v.$containedColor;
-    color: #fff;
   }
 
   //icon 관련
