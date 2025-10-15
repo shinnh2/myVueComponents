@@ -1,0 +1,75 @@
+@use "/src/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as m;
+
+.select-wrap {
+  width: 240px;
+  position: relative;
+
+  // select-wrap 선택된 값 영역
+  &__selected {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    .select-wrap__selected-value {
+      flex: 1;
+
+      &--placeholder {
+        opacity: 0.38;
+      }
+    }
+    .select-wrap__select-icon {
+      flex: none;
+      margin-left: auto;
+      width: 24px;
+      height: 24px;
+    }
+
+    &.opened {
+      border: 1px solid v.$primaryColor;
+      box-shadow: 0 0 0 1px v.$primaryColor inset;
+
+      .select-wrap__select-icon {
+        transform: rotate(180deg);
+      }
+    }
+    &.selected {
+      border: 1px solid #000;
+    }
+  }
+
+  // select-wrap 목록 영역
+  &__options {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow:
+      0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+
+    &-list {
+      width: 100%;
+      padding: 8px 0;
+    }
+    &-list-item {
+      padding: 6px 16px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      &--placeholder {
+        padding: 6px 16px;
+        opacity: 0.38;
+      }
+    }
+  }
+}

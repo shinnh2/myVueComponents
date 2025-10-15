@@ -4,6 +4,7 @@
   import Avatar from "./components/avatar/Avatar.vue";
   import Badge from "./components/badge/Badge.vue";
   import TextField from "./components/input/TextField.vue";
+  import Select from "./components/select/Select.vue";
 
   /**
    * 클릭 이벤트 핸들러
@@ -35,6 +36,11 @@
   const usertext = ref("아이콘이 있는 input");
   const errorExample = ref("");
   const disabledExample = ref("값 비활성화");
+  /**
+   * select 박스의 반응형 값
+   */
+  const selectedFruit = ref("");
+  const selectedVagetable = ref("");
 </script>
 
 <template>
@@ -284,6 +290,35 @@
         ></TextField>
       </section>
     </form>
+  </article>
+
+  <!-- Select -->
+  <article>
+    <h2>Select</h2>
+    <h3>label이 있는 Select box</h3>
+    <section>
+      <Select
+        v-model="selectedFruit"
+        id="fruit"
+        name="fruit"
+        :options="['사과 🍎', '바나나 🍌', '포도 🍇', '키위 🥝', '수박 🍉', '오렌지 🍊']"
+        placeholder="과일을 선택하세요"
+        label="과일 선택"
+      >
+      </Select>
+    </section>
+    <h3>label이 없는 Select box</h3>
+    <section>
+      <Select
+        v-model="selectedVagetable"
+        id="vagetable"
+        name="vagetable"
+        :options="['배추 🥬', '오이 🥒', '당근 🥕', '가지 🍆', '토마토 🍅', '양파 🧅']"
+        placeholder="야채를 선택하세요"
+        ariaLabel="야채 선택"
+      >
+      </Select>
+    </section>
   </article>
 </template>
 
