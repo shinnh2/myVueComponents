@@ -5,6 +5,7 @@
   import Badge from "./components/badge/Badge.vue";
   import TextField from "./components/input/TextField.vue";
   import Select from "./components/select/Select.vue";
+  import Checkbox from "./components/input/Checkbox.vue";
 
   /**
    * 클릭 이벤트 핸들러
@@ -36,6 +37,12 @@
   const usertext = ref("아이콘이 있는 input");
   const errorExample = ref("");
   const disabledExample = ref("값 비활성화");
+  /**
+   * Checkbox 컴포넌트에 사용될 반응형 값
+   */
+  const isCheckedhobby1 = ref(false);
+  const isCheckedhobby2 = ref(false);
+  const isCheckedhobby3 = ref(false);
   /**
    * select 박스의 반응형 값
    */
@@ -236,8 +243,8 @@
   <!-- Input -->
   <article>
     <h2>Input</h2>
-    <h3>Input - Text field (Input type text, password, number)</h3>
     <form>
+      <h3>Input - Text field (Input type text, password, number)</h3>
       <h4>Text field : Type별</h4>
       <section class="nowrap">
         <TextField v-model="username" id="username" name="username" label="사용자명"></TextField>
@@ -288,6 +295,31 @@
           label="비활성화된 Text Field"
           :disabled="true"
         ></TextField>
+      </section>
+
+      <h3>Input - Checkbox</h3>
+      <section>
+        <Checkbox
+          v-model="isCheckedhobby1"
+          id="hobby1"
+          name="hobby1"
+          label="취미1"
+          value="hobby1"
+        ></Checkbox>
+        <Checkbox
+          v-model="isCheckedhobby2"
+          id="hobby2"
+          name="hobby2"
+          label="취미2"
+          value="hobby2"
+        ></Checkbox>
+        <Checkbox
+          v-model="isCheckedhobby3"
+          id="hobby3"
+          name="hobby3"
+          label="취미3"
+          value="hobby3"
+        ></Checkbox>
       </section>
     </form>
   </article>
@@ -353,7 +385,7 @@
   h3 {
     position: relative;
     padding-left: 12px;
-    margin: 4px 0;
+    margin: 8px 0;
     font-size: 18px;
   }
   h3::before {
