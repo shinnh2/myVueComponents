@@ -1,0 +1,45 @@
+@use "/src/styles/abstracts/variables" as v;
+@use "/src/styles/abstracts/mixins" as m;
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  &__checkbox {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+
+      &--checked {
+        fill: v.$primaryColor;
+      }
+      &--unchecked {
+        fill: #aaa;
+      }
+    }
+  }
+
+  &__label {
+    margin-left: 4px;
+    font-size: 14px;
+  }
+
+  input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
